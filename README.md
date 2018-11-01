@@ -2,6 +2,28 @@
 
 The QueryString interface(same as [URLSearchParams](https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams)) defines utility methods to modify the current URL query string.
 
+## Installation
+
+```
+npm i update-query-string
+```
+
+## Example
+
+```javascript
+import QueryString from "update-query-string";
+
+// current URL: http://example.com/?q=URLUtils.searchParams&topic=api
+
+QueryString.has("topic") === true; // true
+QueryString.get("topic") === "api"; // true
+QueryString.getAll("topic"); // ["api"]
+QueryString.get("foo") === null; // true
+QueryString.append("topic", "webdev"); // current URL: http://example.com/?q=URLUtils.searchParams&topic=api&topic=webdev
+QueryString.set("topic", "More webdev"); // current URL: http://example.com/?q=URLUtils.searchParams&topic=More+webdev"
+QueryString.delete("topic"); // current URL: http://example.com/?q=URLUtils.searchParams"
+```
+
 ## Methods
 
 ### QueryString.append(key, value)
@@ -47,22 +69,6 @@ Returns a string containing a query string suitable for use in a URL.
 ### QueryString.values()
 
 Returns an iterator allowing to go through all values of the key/value pairs contained in this object.
-
-## Example
-
-```javascript
-import QueryString from 'update-query-string';
-
-// current URL: http://example.com/?q=URLUtils.searchParams&topic=api
-
-QueryString.has("topic") === true; // true
-QueryString.get("topic") === "api"; // true
-QueryString.getAll("topic"); // ["api"]
-QueryString.get("foo") === null; // true
-QueryString.append("topic", "webdev"); // current URL: http://example.com/?q=URLUtils.searchParams&topic=api&topic=webdev
-QueryString.set("topic", "More webdev"); // current URL: http://example.com/?q=URLUtils.searchParams&topic=More+webdev"
-QueryString.delete("topic"); // current URL: http://example.com/?q=URLUtils.searchParams"
-```
 
 ## Browser compatibility
 
